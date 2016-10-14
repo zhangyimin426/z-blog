@@ -577,7 +577,7 @@ public class StringUtil {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(isEmail("luzhen@163.com"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(isEmail("luzhen@163.com"));
+//    }
 }

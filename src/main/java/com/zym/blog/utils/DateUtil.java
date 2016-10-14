@@ -1227,57 +1227,57 @@ public class DateUtil {
 
     }
 
-    public static void main(String[] args) {
-        Date date = DateUtil.parse("2015-08-11 19:50:1", "yyyy-MM-dd HH:mm:ss");
-        Date date2 = DateUtil.parse("2015-08-12 19:52:11", "yyyy-MM-dd HH:mm:ss");
+//    public static void main(String[] args) {
+//        Date date = DateUtil.parse("2015-08-11 19:50:1", "yyyy-MM-dd HH:mm:ss");
+//        Date date2 = DateUtil.parse("2015-08-12 19:52:11", "yyyy-MM-dd HH:mm:ss");
 //        System.out.println(getDiffTimeStr(date,date2));
 //        System.out.println(DateUtil.getYesToday());
-
-        Calendar start = Calendar.getInstance();
-        Calendar c = Calendar.getInstance();
-
-
-        c.setFirstDayOfWeek(Calendar.MONDAY);
-        int i = c.get(Calendar.WEEK_OF_MONTH);
-        System.out.println(i);
-        System.out.println(start.WEEK_OF_MONTH);
-
-//        Date dd = getMonthWeekStartDate(new Date(), 1);
-//        System.out.println(format(getMonthWeekStartDate(new Date(), 1), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekEndDate(new Date(), 1), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekStartDate(new Date(), 2), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekEndDate(new Date(), 2), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekStartDate(new Date(), 3), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekEndDate(new Date(), 3), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekStartDate(new Date(), 4), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekEndDate(new Date(), 4), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekStartDate(new Date(), 5), "yyyy-MM-dd "));
-//        System.out.println(format(getMonthWeekEndDate(new Date(), 5), "yyyy-MM-dd "));
-
-        Date dd = DateUtil.parse("2016-01-11 19:50:1", "yyyy-MM-dd HH:mm:ss");
-
-        for (int ii = 0; ii < 12; ii++) {
-            System.out.println(">>>>>>>>>>>>> " + (ii + 1) + " 月份 ");
-            for (int j = 1; j <= 5; j++) {
-                System.out.println((ii + 1) + " 月 第 " + j + " 周   开始  日期 " + format(getMonthWeekStartDate(dd, j), "yyyy-MM-dd "));
-                System.out.println((ii + 1) + " 月 第 " + j + " 周   结束  日期 " + format(getMonthWeekEndDate(dd, j), "yyyy-MM-dd "));
-
-
-            }
-            dd = getAfterNMonthDate(1, dd);
-            System.out.println(">>>>>>>>>>>>> " + (ii + 1) + " 月份结束 ");
-        }
-//        System.out.println(" 第 1 周   开始  日期 " + format(getMonthWeekStartDate(dd, 1), "yyyy-MM-dd "));
-//        System.out.println(" 第 1 周   结束  日期 " + format(getMonthWeekEndDate(dd, 1), "yyyy-MM-dd "));
-//        System.out.println(" 第 2 周   开始  日期 " + format(getMonthWeekStartDate(dd, 2), "yyyy-MM-dd "));
-//        System.out.println(" 第 2 周   结束  日期 " + format(getMonthWeekEndDate(dd, 2), "yyyy-MM-dd "));
-//        System.out.println(" 第 3 周   开始  日期 " + format(getMonthWeekStartDate(dd, 3), "yyyy-MM-dd "));
-//        System.out.println(" 第 3 周   结束  日期 " + format(getMonthWeekEndDate(dd, 3), "yyyy-MM-dd "));
-//        System.out.println(" 第 4 周   开始  日期 " + format(getMonthWeekStartDate(dd, 4), "yyyy-MM-dd "));
-//        System.out.println(" 第 4 周   结束  日期 " + format(getMonthWeekEndDate(dd, 4), "yyyy-MM-dd "));
-//        System.out.println(" 第 5 周   开始  日期 " + format(getMonthWeekStartDate(dd, 5), "yyyy-MM-dd "));
-//        System.out.println(" 第 5 周   结束  日期 " + format(getMonthWeekEndDate(dd, 5), "yyyy-MM-dd "));
-
-    }
+//
+//        Calendar start = Calendar.getInstance();
+//        Calendar c = Calendar.getInstance();
+//
+//
+//        c.setFirstDayOfWeek(Calendar.MONDAY);
+//        int i = c.get(Calendar.WEEK_OF_MONTH);
+//        System.out.println(i);
+//        System.out.println(start.WEEK_OF_MONTH);
+//
+////        Date dd = getMonthWeekStartDate(new Date(), 1);
+////        System.out.println(format(getMonthWeekStartDate(new Date(), 1), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekEndDate(new Date(), 1), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekStartDate(new Date(), 2), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekEndDate(new Date(), 2), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekStartDate(new Date(), 3), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekEndDate(new Date(), 3), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekStartDate(new Date(), 4), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekEndDate(new Date(), 4), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekStartDate(new Date(), 5), "yyyy-MM-dd "));
+////        System.out.println(format(getMonthWeekEndDate(new Date(), 5), "yyyy-MM-dd "));
+//
+//        Date dd = DateUtil.parse("2016-01-11 19:50:1", "yyyy-MM-dd HH:mm:ss");
+//
+//        for (int ii = 0; ii < 12; ii++) {
+//            System.out.println(">>>>>>>>>>>>> " + (ii + 1) + " 月份 ");
+//            for (int j = 1; j <= 5; j++) {
+//                System.out.println((ii + 1) + " 月 第 " + j + " 周   开始  日期 " + format(getMonthWeekStartDate(dd, j), "yyyy-MM-dd "));
+//                System.out.println((ii + 1) + " 月 第 " + j + " 周   结束  日期 " + format(getMonthWeekEndDate(dd, j), "yyyy-MM-dd "));
+//
+//
+//            }
+//            dd = getAfterNMonthDate(1, dd);
+//            System.out.println(">>>>>>>>>>>>> " + (ii + 1) + " 月份结束 ");
+//        }
+////        System.out.println(" 第 1 周   开始  日期 " + format(getMonthWeekStartDate(dd, 1), "yyyy-MM-dd "));
+////        System.out.println(" 第 1 周   结束  日期 " + format(getMonthWeekEndDate(dd, 1), "yyyy-MM-dd "));
+////        System.out.println(" 第 2 周   开始  日期 " + format(getMonthWeekStartDate(dd, 2), "yyyy-MM-dd "));
+////        System.out.println(" 第 2 周   结束  日期 " + format(getMonthWeekEndDate(dd, 2), "yyyy-MM-dd "));
+////        System.out.println(" 第 3 周   开始  日期 " + format(getMonthWeekStartDate(dd, 3), "yyyy-MM-dd "));
+////        System.out.println(" 第 3 周   结束  日期 " + format(getMonthWeekEndDate(dd, 3), "yyyy-MM-dd "));
+////        System.out.println(" 第 4 周   开始  日期 " + format(getMonthWeekStartDate(dd, 4), "yyyy-MM-dd "));
+////        System.out.println(" 第 4 周   结束  日期 " + format(getMonthWeekEndDate(dd, 4), "yyyy-MM-dd "));
+////        System.out.println(" 第 5 周   开始  日期 " + format(getMonthWeekStartDate(dd, 5), "yyyy-MM-dd "));
+////        System.out.println(" 第 5 周   结束  日期 " + format(getMonthWeekEndDate(dd, 5), "yyyy-MM-dd "));
+//
+//    }
 }
 

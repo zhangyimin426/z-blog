@@ -6,7 +6,7 @@
     <groupId>com.zym</groupId>
     <artifactId>z-blog</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>spring-blog Maven Webapp</name>
+    <name>z-blog Maven Webapp</name>
 
     <!-- 继承父包 -->
     <parent>
