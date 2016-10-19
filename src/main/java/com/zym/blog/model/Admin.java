@@ -1,5 +1,7 @@
 package com.zym.blog.model;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,6 +29,8 @@ public class Admin implements Serializable {
     private Date createTime;
 
     private Date updateTime;
+
+
 
     public Integer getAdminId() {
         return adminId;
@@ -98,5 +102,10 @@ public class Admin implements Serializable {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? null : new Gson().toJson(this);
     }
 }

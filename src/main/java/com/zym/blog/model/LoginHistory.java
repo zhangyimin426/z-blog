@@ -1,5 +1,7 @@
 package com.zym.blog.model;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -36,5 +38,10 @@ public class LoginHistory implements Serializable {
 
     public void setRemoteIp(String remoteIp) {
         this.remoteIp = remoteIp;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? null : new Gson().toJson(this);
     }
 }

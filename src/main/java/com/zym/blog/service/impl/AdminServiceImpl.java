@@ -28,7 +28,7 @@ public class AdminServiceImpl implements AdminService {
         AdminExample.Criteria criteria = example.createCriteria();
         criteria.andLoginNameEqualTo(loginName);
         List<Admin> admins = adminDao.selectByExample(example);
-        if (admins != null) {
+        if (admins != null && admins.size() > 0) {
             return admins.get(0);
         }
         return null;

@@ -1,5 +1,7 @@
 package com.zym.blog.model;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -42,5 +44,10 @@ public class Like implements Serializable {
 
     public void setLikeIp(String likeIp) {
         this.likeIp = likeIp;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? null : new Gson().toJson(this);
     }
 }

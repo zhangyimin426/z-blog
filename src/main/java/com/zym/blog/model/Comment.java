@@ -1,5 +1,7 @@
 package com.zym.blog.model;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -52,5 +54,10 @@ public class Comment implements Serializable {
 
     public void setCommentIp(String commentIp) {
         this.commentIp = commentIp;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? null : new Gson().toJson(this);
     }
 }

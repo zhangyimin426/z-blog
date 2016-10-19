@@ -81,15 +81,13 @@
     where admin_id = #{adminId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.zym.blog.model.AdminLoginHistory" >
+  <insert id="insert" parameterType="com.zym.blog.model.AdminLoginHistory" useGeneratedKeys="true" keyProperty="adminId">
     insert into t_admin_login_history
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      admin_id,
       login_time,
       remote_ip,
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      #{adminId,jdbcType=INTEGER},
       #{loginTime,jdbcType=TIMESTAMP},
       #{remoteIp,jdbcType=VARCHAR},
     </trim>

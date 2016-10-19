@@ -1,5 +1,7 @@
 package com.zym.blog.model;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -87,5 +89,10 @@ public class Blog implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? null : new Gson().toJson(this);
     }
 }

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zym.blog.dao.FunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.zym.blog.model.Function" >
+    <id column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="function_name" property="functionName" jdbcType="VARCHAR" />
+    <result column="function_code" property="functionCode" jdbcType="VARCHAR" />
+    <result column="intercept_url_suffix" property="interceptUrlSuffix" jdbcType="VARCHAR" />
+    <result column="parent_function_id" property="parentFunctionId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    function_id, function_name, function_code, intercept_url_suffix, parent_function_id
+  </sql>
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zym.blog.model.example.FunctionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="com.zym.blog.model.example.FunctionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.zym.blog.model.example.FunctionExample" >
+    delete from t_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+
+  <select id="countByExample" parameterType="com.zym.blog.model.example.FunctionExample" resultType="java.lang.Integer" >
+    select count(*) from t_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_function
+    <set >
+      <if test="record.functionId != null" >
+        function_id = #{record.functionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.functionName != null" >
+        function_name = #{record.functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.functionCode != null" >
+        function_code = #{record.functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interceptUrlSuffix != null" >
+        intercept_url_suffix = #{record.interceptUrlSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentFunctionId != null" >
+        parent_function_id = #{record.parentFunctionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="updateByExample" parameterType="map" >
+    update t_function
+    set function_id = #{record.functionId,jdbcType=INTEGER},
+      function_name = #{record.functionName,jdbcType=VARCHAR},
+      function_code = #{record.functionCode,jdbcType=VARCHAR},
+      intercept_url_suffix = #{record.interceptUrlSuffix,jdbcType=VARCHAR},
+      parent_function_id = #{record.parentFunctionId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_function
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.zym.blog.model.Function" useGeneratedKeys="true" keyProperty="functionId" >
+    insert into t_function (function_name, function_code, intercept_url_suffix, 
+      parent_function_id)
+    values (#{functionName,jdbcType=VARCHAR}, #{functionCode,jdbcType=VARCHAR}, #{interceptUrlSuffix,jdbcType=VARCHAR}, 
+      #{parentFunctionId,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.zym.blog.model.Function" useGeneratedKeys="true" keyProperty="functionId" >
+    insert into t_function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      function_name,
+      function_code,
+      intercept_url_suffix,
+      parent_function_id,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{functionName,jdbcType=VARCHAR},
+      #{functionCode,jdbcType=VARCHAR},
+      #{interceptUrlSuffix,jdbcType=VARCHAR},
+      #{parentFunctionId,jdbcType=INTEGER},
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zym.blog.model.Function" >
+    update t_function
+    <set >
+      <if test="functionName != null" >
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionCode != null" >
+        function_code = #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="interceptUrlSuffix != null" >
+        intercept_url_suffix = #{interceptUrlSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="parentFunctionId != null" >
+        parent_function_id = #{parentFunctionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.zym.blog.model.Function" >
+    update t_function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      function_code = #{functionCode,jdbcType=VARCHAR},
+      intercept_url_suffix = #{interceptUrlSuffix,jdbcType=VARCHAR},
+      parent_function_id = #{parentFunctionId,jdbcType=INTEGER}
+    where function_id = #{functionId,jdbcType=INTEGER}
+  </update>
+</mapper>

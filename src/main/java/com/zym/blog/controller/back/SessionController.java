@@ -13,6 +13,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,11 +58,17 @@ public class SessionController {
         }
 
         //检查密码安全
-        if (!DigestUtils.md5Hex(adminResult.getPassword()).equals(password)) {
+        if (!DigestUtils.md5Hex(password).equals(adminResult.getPassword())) {
             return JsonResult.fail(GlobalResultStatus.PASSWORD_ERROR);
         }
+
+
+
         request.getSession().setAttribute(BaseConstant.ADMIN_SESSION, adminResult);
 
+
+
+        log.info("-------zblog-------write：session_id:" + request.getSession().getId());
         try {
             recordLoginHistory(request, adminResult.getAdminId());
         } catch (Exception e) {

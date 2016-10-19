@@ -6,6 +6,8 @@ package com.zym.blog.constant;
  */
 public class BaseConstant {
 
-    public static final String ADMIN_SESSION = "ZBLOG_ADMIN_SESSION";
+    public static final String ADMIN_SESSION = "zblog_admin_session";
+
+    public static final String ADMIN_RIGHT = "zblog_admin_right";
 
 }

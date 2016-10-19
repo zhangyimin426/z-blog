@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.zym.blog.dao.RightMapper" >
+  <resultMap id="BaseResultMap" type="com.zym.blog.model.Right" >
+    <id column="right_id" property="rightId" jdbcType="INTEGER" />
+    <result column="right_type" property="rightType" jdbcType="INTEGER" />
+    <result column="right_type_desc" property="rightTypeDesc" jdbcType="VARCHAR" />
+    <result column="right_name" property="rightName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="RightResultMap" type="com.zym.blog.dto.AdminRightDto">
+    <id column="right_id" property="rightId" jdbcType="INTEGER"/>
+    <result column="right_type" property="rightType" jdbcType="INTEGER"/>
+    <result column="right_type_desc" property="rightTypeDesc" jdbcType="VARCHAR"/>
+    <result column="right_name" property="rightName" jdbcType="VARCHAR"/>
+    <result column="menu_id" property="menuId" jdbcType="INTEGER"/>
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+    <result column="menu_url" property="menuUrl" jdbcType="VARCHAR"/>
+    <result column="parent_menu_id" property="parentMenuId" jdbcType="INTEGER"/>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    right_id, right_type, right_type_desc, right_name
+  </sql>
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zym.blog.model.example.RightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="com.zym.blog.model.example.RightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.zym.blog.model.example.RightExample" >
+    delete from t_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+
+  <select id="countByExample" parameterType="com.zym.blog.model.example.RightExample" resultType="java.lang.Integer" >
+    select count(*) from t_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_right
+    <set >
+      <if test="record.rightId != null" >
+        right_id = #{record.rightId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rightType != null" >
+        right_type = #{record.rightType,jdbcType=INTEGER},
+      </if>
+      <if test="record.rightTypeDesc != null" >
+        right_type_desc = #{record.rightTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rightName != null" >
+        right_name = #{record.rightName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_right
+    set right_id = #{record.rightId,jdbcType=INTEGER},
+      right_type = #{record.rightType,jdbcType=INTEGER},
+      right_type_desc = #{record.rightTypeDesc,jdbcType=VARCHAR},
+      right_name = #{record.rightName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_right
+    where right_id = #{rightId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_right
+    where right_id = #{rightId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zym.blog.model.Right" useGeneratedKeys="true" keyProperty="rightId" >
+    insert into t_right (right_type, right_type_desc, right_name
+      )
+    values (#{rightType,jdbcType=INTEGER}, #{rightTypeDesc,jdbcType=VARCHAR}, #{rightName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zym.blog.model.Right" useGeneratedKeys="true" keyProperty="rightId" >
+    insert into t_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      right_type,
+      right_type_desc,
+      right_name,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{rightType,jdbcType=INTEGER},
+      #{rightTypeDesc,jdbcType=VARCHAR},
+      #{rightName,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zym.blog.model.Right" >
+    update t_right
+    <set >
+      <if test="rightType != null" >
+        right_type = #{rightType,jdbcType=INTEGER},
+      </if>
+      <if test="rightTypeDesc != null" >
+        right_type_desc = #{rightTypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="rightName != null" >
+        right_name = #{rightName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where right_id = #{rightId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.zym.blog.model.Right" >
+    update t_right
+    set right_type = #{rightType,jdbcType=INTEGER},
+      right_type_desc = #{rightTypeDesc,jdbcType=VARCHAR},
+      right_name = #{rightName,jdbcType=VARCHAR}
+    where right_id = #{rightId,jdbcType=INTEGER}
+  </update>
+
+  <select id="getByAdminId" parameterType="java.lang.Integer">
+    select r.right_id, r.right_type, r.right_type_desc, r.right_name, m.meun_id, m.meun_name, m.meun_url,
+    m.parent_menu_id from t_right r RIGHT JOIN t_right_menu rm on rm.right_id = r.right_id
+    LEFT JOIN t_menu m on rm.menu_id = m.meun_id
+    LEFT JOIN t_role_right rr on r.right_id = rr.right_id LEFT JOIN t_admin_role ar on rr.role_id = ar.role_id where
+    ar.admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+</mapper>
