@@ -1,6 +1,6 @@
 package com.zym.blog.service;
 
-import com.zym.blog.dto.AdminRightDto;
+import com.zym.blog.dto.AdminMenuRightDto;
 import com.zym.blog.form.RightForm;
 import com.zym.blog.model.Right;
 
@@ -31,5 +31,5 @@ public interface RightService {
      * @param adminId
      * @return
      */
-    List<AdminRightDto> getByAdminId(int adminId);
+    List<AdminMenuRightDto> getByAdminId(int adminId);
 }

@@ -1,6 +1,6 @@
 package com.zym.blog.dao;
 
-import com.zym.blog.dto.AdminRightDto;
+import com.zym.blog.dto.AdminMenuRightDto;
 import com.zym.blog.model.Right;
 import java.util.List;
 
@@ -36,5 +36,5 @@ public interface RightMapper {
     int updateByPrimaryKey(Right record);
 
     //根据用户id获取所有权限
-    List<AdminRightDto> getByAdminId(int adminId);
+    List<AdminMenuRightDto> getByAdminId(int adminId);
 }

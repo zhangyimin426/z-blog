@@ -7,41 +7,41 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 登录用户权限信息dto
+ * 登录用户菜单权限信息dto
  * @author Gavin
  * @date 2016-10-18
  */
-public class AdminRightDto implements Serializable {
+public class AdminMenuRightDto implements Serializable {
 
-    private int rightId;
+    private Integer rightId;
 
-    private int rightType;
+    private Integer rightType;
 
     private String rightTypeDesc;
 
     private String rightName;
 
-    private int menuId;
+    private Integer menuId;
 
     private String menuName;
 
     private String menuUrl;
 
-    private int parentMenuId;
+    private Integer parentMenuId;
 
-    public int getRightId() {
+    public Integer getRightId() {
         return rightId;
     }
 
-    public void setRightId(int rightId) {
+    public void setRightId(Integer rightId) {
         this.rightId = rightId;
     }
 
-    public int getRightType() {
+    public Integer getRightType() {
         return rightType;
     }
 
-    public void setRightType(int rightType) {
+    public void setRightType(Integer rightType) {
         this.rightType = rightType;
     }
 
@@ -61,11 +61,11 @@ public class AdminRightDto implements Serializable {
         this.rightName = rightName;
     }
 
-    public int getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(int menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
 
@@ -85,11 +85,11 @@ public class AdminRightDto implements Serializable {
         this.menuUrl = menuUrl;
     }
 
-    public int getParentMenuId() {
+    public Integer getParentMenuId() {
         return parentMenuId;
     }
 
-    public void setParentMenuId(int parentMenuId) {
+    public void setParentMenuId(Integer parentMenuId) {
         this.parentMenuId = parentMenuId;
     }
 }

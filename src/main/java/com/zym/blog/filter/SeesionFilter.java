@@ -25,7 +25,7 @@ import java.io.IOException;
  */
 
 
-@WebFilter(filterName = "sessionFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "sessionFilter", urlPatterns = "/*")
 public class SeesionFilter implements Filter {
 
     private static final Logger log = LoggerFactory.getLogger(SeesionFilter.class);

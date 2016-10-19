@@ -1,10 +1,13 @@
 package com.zym.blog.controller.back;
 
 import com.zym.blog.constant.BaseConstant;
+import com.zym.blog.dto.AdminInfoDto;
+import com.zym.blog.dto.AdminMenuRightDto;
 import com.zym.blog.model.Admin;
 import com.zym.blog.model.AdminLoginHistory;
 import com.zym.blog.service.AdminLoginHistoryService;
 import com.zym.blog.service.AdminService;
+import com.zym.blog.service.RightService;
 import com.zym.blog.statuscode.GlobalResultStatus;
 import com.zym.blog.utils.DateUtil;
 import com.zym.blog.utils.JsonResult;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 管理后台登录和登出
@@ -38,6 +42,9 @@ public class SessionController {
     @Autowired
     private AdminLoginHistoryService adminLoginHistoryService;
 
+    @Autowired
+    private RightService rightService;
+
     private static final Logger log = LoggerFactory.getLogger(SessionController.class);
 
     /**
@@ -48,7 +55,7 @@ public class SessionController {
      * @param request   请求
      * @return
      */
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Object login(String loginName, String password, HttpServletRequest request) {
 
         //查询帐号信息
@@ -62,11 +69,14 @@ public class SessionController {
             return JsonResult.fail(GlobalResultStatus.PASSWORD_ERROR);
         }
 
-
+        List<AdminMenuRightDto> menuRightDtos = rightService.getByAdminId(adminResult.getAdminId());
 
         request.getSession().setAttribute(BaseConstant.ADMIN_SESSION, adminResult);
+        request.getSession().setAttribute(BaseConstant.ADMIN_RIGHT, menuRightDtos);
 
-
+        AdminInfoDto infoDto = new AdminInfoDto();
+        infoDto.setAdmin(adminResult);
+        infoDto.setMenuRightDtos(menuRightDtos);
 
         log.info("-------zblog-------write：session_id:" + request.getSession().getId());
         try {
@@ -74,8 +84,7 @@ public class SessionController {
         } catch (Exception e) {
             log.info("账号【" + loginName + "】记录登录日志失败", e);
         }
-
-        return JsonResult.success(adminResult);
+        return JsonResult.success(infoDto);
     }
 
     /**
